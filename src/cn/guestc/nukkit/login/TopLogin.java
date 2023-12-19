@@ -45,13 +45,13 @@ public class TopLogin extends PluginBase {
     }
 
     private void init(){
-        api = new TopLoginAPI(this);
         if(!getDataFolder().exists()) getDataFolder().mkdir();
         saveDefaultConfig();
 
         saveResource("language_chs.yml",false);
         reloadConfig();
         pconfig = getConfig();
+        api = new TopLoginAPI(this);
         if(pconfig.get("storage-type").toString().equals("mysql")){
             getLogger().info("Using "+ TextFormat.GREEN+"MYSQL");
             dataHelper = new MysqlConfig();
